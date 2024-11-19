@@ -5,6 +5,6 @@ from users.models import CustomUser
 
 
 class CustomUserViewSet(viewsets.ModelViewSet):
-    """viewset модели course"""
+    """viewset модели customuser"""
     serializer_class = CustomUserSerializer
     queryset = CustomUser.objects.all()
