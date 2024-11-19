@@ -20,6 +20,6 @@ http://localhost:8000/lms/lesson/
 уроки
 
 
-http://localhost:8000/users/user
+~~http://localhost:8000/users/user~~
 
-пользователи
+~~пользователи~~
