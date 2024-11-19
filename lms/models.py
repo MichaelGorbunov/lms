@@ -8,7 +8,8 @@ class Course(models.Model):
         max_length=150, verbose_name="Название курса", help_text="Course Title"
     )
     description = models.TextField(
-        verbose_name="Описание курса", help_text="Course Description"
+        verbose_name="Описание курса", help_text="Course Description",
+        **NULLABLE
     )
     preview = models.ImageField(
         upload_to="lms/courses",
