@@ -3,13 +3,13 @@ from django.db import models
 # Create your models here.
 NULLABLE = {"blank": True, "null": True}
 
+
 class Course(models.Model):
     title = models.CharField(
         max_length=150, verbose_name="Название курса", help_text="Course Title"
     )
     description = models.TextField(
-        verbose_name="Описание курса", help_text="Course Description",
-        **NULLABLE
+        verbose_name="Описание курса", help_text="Course Description", **NULLABLE
     )
     preview = models.ImageField(
         upload_to="lms/courses",
@@ -48,7 +48,6 @@ class Lesson(models.Model):
     video_url = models.URLField(
         verbose_name="Ссылка на урок", help_text="Video URL", **NULLABLE
     )
-
 
     def __str__(self):
         return self.title

@@ -1,13 +1,11 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.hashers import make_password
-
-
+from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 NULLABLE = {"blank": True, "null": True}
 
-class CustomUser(AbstractUser):
 
+class CustomUser(AbstractUser):
 
     first_name = models.CharField(
         max_length=50, verbose_name="имя", help_text="Укажите имя", **NULLABLE
@@ -45,11 +43,3 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
-
-
-
-
-
-
-
-
