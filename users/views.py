@@ -14,13 +14,15 @@ class CustomUserViewSet(viewsets.ModelViewSet):
 
 
 class PaymentsViewSet(viewsets.ModelViewSet):
+    """работа с платежами"""
     serializer_class = PaymentSerializer
     queryset = Payments.objects.all()
 
 
 class PaymentListView(generics.ListAPIView):
+    """вывод списка платежей"""
     queryset = Payments.objects.all()
     serializer_class = PaymentSerializer
     filter_backends = [OrderingFilter, DjangoFilterBackend]
     ordering_fields = ["date_pay"]
-    filterset_fields = ["pay_type","pay_course","pay_lesson"]
+    filterset_fields = ["pay_type", "pay_course", "pay_lesson"]
