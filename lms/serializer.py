@@ -4,7 +4,6 @@ from lms.models import Course, Lesson
 
 
 class CourseSerializer(serializers.ModelSerializer):
-
     lesson_count = serializers.SerializerMethodField(read_only=True)
 
     def get_lesson_count(self, instance):
