@@ -3,6 +3,7 @@ from rest_framework import serializers
 from lms.models import Course, Lesson
 
 
+
 class CourseSerializer(serializers.ModelSerializer):
     lesson_count = serializers.SerializerMethodField(read_only=True)
 
