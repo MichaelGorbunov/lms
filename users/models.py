@@ -1,12 +1,12 @@
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from lms.models import Lesson, Course
 
 NULLABLE = {"blank": True, "null": True}
 
 
 class CustomUser(AbstractUser):
-
     first_name = models.CharField(
         max_length=50, verbose_name="имя", help_text="Укажите имя", **NULLABLE
     )
@@ -43,3 +43,21 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+
+class Payments(models.Model):
+    STATUS_CHOICES = [
+        ("cash", "Наличные"),
+        ("no-cash", "Безналичная оплата"),
+    ]
+
+    user_pay = models.ForeignKey(CustomUser, verbose_name="Пользователь", on_delete=models.CASCADE)
+    pay_course = models.ForeignKey(Course, verbose_name="Оплаченный курс", on_delete=models.CASCADE)
+    pay_lesson = models.ForeignKey(Lesson, verbose_name="Оплаченный курс", on_delete=models.CASCADE)
+    date_pay = models.DateField(verbose_name="Дата оплаты")
+    summ = models.PositiveIntegerField(verbose_name="Сумма")
+    pay_type = models.CharField(max_length=10, choices=STATUS_CHOICES, default="cash", verbose_name="Тип платежа")
+
+    class Meta:
+        verbose_name = "Платеж"
+        verbose_name_plural = "Платежи"
