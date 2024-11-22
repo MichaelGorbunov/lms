@@ -14,3 +14,4 @@ class PaymentSerializer(serializers.ModelSerializer):
         model = Payments
         fields = "__all__"
 
+
