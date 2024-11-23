@@ -12,7 +12,7 @@ class Course(models.Model):
         verbose_name="Описание курса", help_text="Course Description", **NULLABLE
     )
     preview = models.ImageField(
-        upload_to="lms/courses",
+        upload_to="lms/courses/",
         verbose_name="Превью курса",
         help_text="Course Preview",
         default="lms/courses/default.jpg",
@@ -40,7 +40,7 @@ class Lesson(models.Model):
         verbose_name="Описание урока", help_text="Lesson Description"
     )
     preview = models.ImageField(
-        upload_to="lms/lessons",
+        upload_to="lms/lessons/",
         verbose_name="Превью урока",
         help_text="Lessons Preview",
         default="lms/lessons/default.jpg",
