@@ -30,7 +30,8 @@ class Course(models.Model):
 
 class Lesson(models.Model):
     course = models.ForeignKey(
-        Course, verbose_name="Курс", on_delete=models.SET_NULL, **NULLABLE
+        Course, verbose_name="Курс", on_delete=models.SET_NULL, **NULLABLE,
+        related_name="lessons"
     )
     title = models.CharField(
         max_length=150, verbose_name="Название урока", help_text="Lesson Title"
@@ -56,5 +57,3 @@ class Lesson(models.Model):
         verbose_name = "урок"
         verbose_name_plural = "уроки"
         ordering = ["title"]
-
-
