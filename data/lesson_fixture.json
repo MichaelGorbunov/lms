@@ -1,0 +1,453 @@
+[
+{
+    "model": "lms.lesson",
+    "pk": 1,
+    "fields": {
+        "course": 1,
+        "title": "Урок-1 курс - 1 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 2,
+    "fields": {
+        "course": 1,
+        "title": "Урок-2 курс - 1 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 3,
+    "fields": {
+        "course": 1,
+        "title": "Урок-3 курс - 1 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 4,
+    "fields": {
+        "course": 1,
+        "title": "Урок-4 курс - 1 ",
+        "description": "Урок-4 Урок-4 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 5,
+    "fields": {
+        "course": 1,
+        "title": "Урок-5 курс - 1 ",
+        "description": "Урок-5 Урок-5 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 6,
+    "fields": {
+        "course": 2,
+        "title": "Урок-1 курс - 2 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 7,
+    "fields": {
+        "course": 2,
+        "title": "Урок-2 курс - 2 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 8,
+    "fields": {
+        "course": 2,
+        "title": "Урок-3 курс - 2 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 9,
+    "fields": {
+        "course": 3,
+        "title": "Урок-1 курс - 3 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 10,
+    "fields": {
+        "course": 3,
+        "title": "Урок-2 курс - 3 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 11,
+    "fields": {
+        "course": 3,
+        "title": "Урок-3 курс - 3 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 12,
+    "fields": {
+        "course": 4,
+        "title": "Урок-1 курс - 4 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 13,
+    "fields": {
+        "course": 4,
+        "title": "Урок-2 курс - 4 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 14,
+    "fields": {
+        "course": 4,
+        "title": "Урок-3 курс - 4 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 15,
+    "fields": {
+        "course": 4,
+        "title": "Урок-4 курс - 4 ",
+        "description": "Урок-4 Урок-4 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 16,
+    "fields": {
+        "course": 4,
+        "title": "Урок-5 курс - 4 ",
+        "description": "Урок-5 Урок-5 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 17,
+    "fields": {
+        "course": 4,
+        "title": "Урок-6 курс - 4 ",
+        "description": "Урок-6 Урок-6 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 18,
+    "fields": {
+        "course": 5,
+        "title": "Урок-1 курс - 5 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 19,
+    "fields": {
+        "course": 5,
+        "title": "Урок-2 курс - 5 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 20,
+    "fields": {
+        "course": 5,
+        "title": "Урок-3 курс - 5 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 21,
+    "fields": {
+        "course": 5,
+        "title": "Урок-4 курс - 5 ",
+        "description": "Урок-4 Урок-4 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 22,
+    "fields": {
+        "course": 5,
+        "title": "Урок-5 курс - 5 ",
+        "description": "Урок-5 Урок-5 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 23,
+    "fields": {
+        "course": 5,
+        "title": "Урок-6 курс - 5 ",
+        "description": "Урок-6 Урок-6 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 24,
+    "fields": {
+        "course": 6,
+        "title": "Урок-1 курс - 6 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 25,
+    "fields": {
+        "course": 6,
+        "title": "Урок-2 курс - 6 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 26,
+    "fields": {
+        "course": 6,
+        "title": "Урок-3 курс - 6 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 27,
+    "fields": {
+        "course": 6,
+        "title": "Урок-4 курс - 6 ",
+        "description": "Урок-4 Урок-4 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 28,
+    "fields": {
+        "course": 7,
+        "title": "Урок-1 курс - 7 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 29,
+    "fields": {
+        "course": 7,
+        "title": "Урок-2 курс - 7 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 30,
+    "fields": {
+        "course": 7,
+        "title": "Урок-3 курс - 7 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 31,
+    "fields": {
+        "course": 7,
+        "title": "Урок-4 курс - 7 ",
+        "description": "Урок-4 Урок-4 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 32,
+    "fields": {
+        "course": 7,
+        "title": "Урок-5 курс - 7 ",
+        "description": "Урок-5 Урок-5 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 33,
+    "fields": {
+        "course": 7,
+        "title": "Урок-6 курс - 7 ",
+        "description": "Урок-6 Урок-6 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 34,
+    "fields": {
+        "course": 8,
+        "title": "Урок-1 курс - 8 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 35,
+    "fields": {
+        "course": 8,
+        "title": "Урок-2 курс - 8 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 36,
+    "fields": {
+        "course": 8,
+        "title": "Урок-3 курс - 8 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 37,
+    "fields": {
+        "course": 9,
+        "title": "Урок-1 курс - 9 ",
+        "description": "Урок-1 Урок-1 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 38,
+    "fields": {
+        "course": 9,
+        "title": "Урок-2 курс - 9 ",
+        "description": "Урок-2 Урок-2 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 39,
+    "fields": {
+        "course": 9,
+        "title": "Урок-3 курс - 9 ",
+        "description": "Урок-3 Урок-3 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 40,
+    "fields": {
+        "course": 9,
+        "title": "Урок-4 курс - 9 ",
+        "description": "Урок-4 Урок-4 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 41,
+    "fields": {
+        "course": 9,
+        "title": "Урок-5 курс - 9 ",
+        "description": "Урок-5 Урок-5 ",
+        "preview": "lms/lessons/default.jpg",
+        "video_url": null
+    }
+}
+]

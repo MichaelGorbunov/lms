@@ -1,0 +1,230 @@
+[
+{
+    "model": "users.payments",
+    "pk": 1,
+    "fields": {
+        "user_pay": 1,
+        "pay_course": 1,
+        "pay_lesson": null,
+        "date_pay": "2024-11-01",
+        "summ": 100,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 2,
+    "fields": {
+        "user_pay": 2,
+        "pay_course": null,
+        "pay_lesson": 1,
+        "date_pay": "2024-11-02",
+        "summ": 100,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 3,
+    "fields": {
+        "user_pay": 3,
+        "pay_course": null,
+        "pay_lesson": 12,
+        "date_pay": "2024-11-03",
+        "summ": 100,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 4,
+    "fields": {
+        "user_pay": 4,
+        "pay_course": null,
+        "pay_lesson": 24,
+        "date_pay": "2024-11-04",
+        "summ": 100,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 5,
+    "fields": {
+        "user_pay": 5,
+        "pay_course": 2,
+        "pay_lesson": null,
+        "date_pay": "2024-11-05",
+        "summ": 1000,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 6,
+    "fields": {
+        "user_pay": 6,
+        "pay_course": 3,
+        "pay_lesson": null,
+        "date_pay": "2024-11-06",
+        "summ": 1000,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 7,
+    "fields": {
+        "user_pay": 6,
+        "pay_course": 5,
+        "pay_lesson": null,
+        "date_pay": "2024-11-07",
+        "summ": 1000,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 8,
+    "fields": {
+        "user_pay": 9,
+        "pay_course": null,
+        "pay_lesson": 37,
+        "date_pay": "2024-11-08",
+        "summ": 1000,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 9,
+    "fields": {
+        "user_pay": 9,
+        "pay_course": null,
+        "pay_lesson": 34,
+        "date_pay": "2024-11-08",
+        "summ": 1000,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 10,
+    "fields": {
+        "user_pay": 12,
+        "pay_course": null,
+        "pay_lesson": 9,
+        "date_pay": "2024-11-08",
+        "summ": 100,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 11,
+    "fields": {
+        "user_pay": 13,
+        "pay_course": null,
+        "pay_lesson": 18,
+        "date_pay": "2024-11-09",
+        "summ": 100,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 12,
+    "fields": {
+        "user_pay": 13,
+        "pay_course": null,
+        "pay_lesson": 19,
+        "date_pay": "2024-11-09",
+        "summ": 100,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 13,
+    "fields": {
+        "user_pay": 13,
+        "pay_course": null,
+        "pay_lesson": 20,
+        "date_pay": "2024-11-09",
+        "summ": 100,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 14,
+    "fields": {
+        "user_pay": 14,
+        "pay_course": null,
+        "pay_lesson": 28,
+        "date_pay": "2024-11-09",
+        "summ": 100,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 15,
+    "fields": {
+        "user_pay": 14,
+        "pay_course": null,
+        "pay_lesson": 29,
+        "date_pay": "2024-11-09",
+        "summ": 100,
+        "pay_type": "no-cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 16,
+    "fields": {
+        "user_pay": 16,
+        "pay_course": 4,
+        "pay_lesson": null,
+        "date_pay": "2024-11-23",
+        "summ": 1000,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 17,
+    "fields": {
+        "user_pay": 19,
+        "pay_course": 6,
+        "pay_lesson": null,
+        "date_pay": "2024-11-23",
+        "summ": 500,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 18,
+    "fields": {
+        "user_pay": 19,
+        "pay_course": 7,
+        "pay_lesson": null,
+        "date_pay": "2024-11-23",
+        "summ": 500,
+        "pay_type": "cash"
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 19,
+    "fields": {
+        "user_pay": 19,
+        "pay_course": null,
+        "pay_lesson": 18,
+        "date_pay": "2024-11-23",
+        "summ": 100,
+        "pay_type": "cash"
+    }
+}
+]
