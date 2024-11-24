@@ -10,9 +10,10 @@ class PaymentSerializer(serializers.ModelSerializer):
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
-    payment_list = serializers.SerializerMethodField(read_only=True)
-    def get_payment_list(self, customuser):
-        return [payment.date_pay for payment in Payments.objects.filter(user_pay=customuser)]
+    # payment_list = serializers.SerializerMethodField(read_only=True)
+    payment_list=PaymentSerializer(many=True,read_only=True, source='pays')
+    # def get_payment_list(self, customuser):
+    #     return [payment.date_pay for payment in Payments.objects.filter(user_pay=customuser)]
 
 
     class Meta:

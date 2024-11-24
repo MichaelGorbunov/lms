@@ -51,7 +51,7 @@ class Payments(models.Model):
         ("no-cash", "Безналичная оплата"),
     ]
 
-    user_pay = models.ForeignKey(CustomUser, verbose_name="Пользователь", on_delete=models.CASCADE)
+    user_pay = models.ForeignKey(CustomUser, verbose_name="Пользователь", on_delete=models.CASCADE,related_name="pays")
     pay_course = models.ForeignKey(Course, verbose_name="Оплаченный курс",null=True,blank=True, on_delete=models.SET_NULL)
     pay_lesson = models.ForeignKey(Lesson, verbose_name="Оплаченный курс",null=True,blank=True, on_delete=models.SET_NULL)
     date_pay = models.DateField(verbose_name="Дата оплаты")
