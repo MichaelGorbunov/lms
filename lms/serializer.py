@@ -9,12 +9,16 @@ class LessonSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    lesson_count = serializers.SerializerMethodField(read_only=True)
+    # lesson_count = serializers.SerializerMethodField(read_only=True)
     # lesson_list = serializers.SerializerMethodField(read_only=True)
     lesson = LessonSerializer(many=True, read_only=True, source='lessons')
+    lessons_count =serializers.SerializerMethodField(read_only=True)
 
-    def get_lesson_count(self, obj):
-        return obj.lessons.count()
+    def get_lessons_count(self, lesson):
+        return Lesson.objects.filter(course=lesson).count()
+
+    # def get_lesson_count(self, obj):
+    #     return obj.lessons.count()
 
     # def get_lesson_list(self, obj):
     #     # Получение информации об уроках, связанных с данным курсом
