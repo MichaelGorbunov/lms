@@ -16,7 +16,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 
 class LessonCreateAPIView(generics.CreateAPIView):
     serializer_class = LessonSerializer
-    permission_classes = (IsAuthenticated, ~IsModerator)
+    permission_classes = (~IsModerator,)
 
 
 class LessonListAPIView(generics.ListAPIView):
