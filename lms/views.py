@@ -22,6 +22,7 @@ class LessonCreateAPIView(generics.CreateAPIView):
 class LessonListAPIView(generics.ListAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    permission_classes = (IsModerator,)
 
 
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
