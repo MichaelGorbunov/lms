@@ -15,24 +15,22 @@ class CustomUserViewSet(viewsets.ModelViewSet):
 
     serializer_class = CustomUserSerializer
     queryset = CustomUser.objects.all()
-    # permission_classes = [AllowAny]  # Позволяем создавать пользователей без авторизации
+    permission_classes = (AllowAny,)  # Пзволяем создавать пользователей без авторизации
 
+    def get_permissions(self):
+        # Получаем список разрешений, в зависимости от типа запроса
+        if self.action in ['create']:  # Если действие - создание пользователя
+            permission_classes = (AllowAny,)  # Позволяем всем доступ к этому действию
+        else:  # Для остальных действий (retrieve, update, delete и т.д.)
+            permission_classes = [permissions.IsAuthenticated]  # Требуем аутентификацию
+
+        return [permission() for permission in permission_classes]
     def perform_create(self, serializer):
         # Создаем пользователя с указанными данными и устанавливаем активность
         user = serializer.save(is_active=True)
         # Устанавливаем хешированный пароль
         user.set_password(user.password)
         user.save()
-
-    def get_permissions(self):
-        # Получаем список разрешений, в зависимости от типа запроса
-        if self.action in ['create']:  # Если действие - создание пользователя
-            permission_classes = [permissions.AllowAny]  # Позволяем всем доступ к этому действию
-        else:  # Для остальных действий (retrieve, update, delete и т.д.)
-            permission_classes = [permissions.IsAuthenticated]  # Требуем аутентификацию
-
-        return [permission() for permission in permission_classes]
-
 
 class PaymentsViewSet(viewsets.ModelViewSet):
     """работа с платежами"""
