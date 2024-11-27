@@ -1,0 +1,4 @@
+python -Xutf8 manage.py dumpdata lms.Course  --output course_fixture.json --indent 4
+python -Xutf8 manage.py dumpdata lms.Lesson  --output lesson_fixture.json --indent 4
+python -Xutf8 manage.py dumpdata users.CustomUser  --output users_fixture.json --indent 4
+python -Xutf8 manage.py dumpdata users.Payments  --output payments_fixture.json --indent 4

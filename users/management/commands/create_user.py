@@ -28,7 +28,9 @@ class Command(BaseCommand):
             user=CustomUser(first_name=first_nm,
                             last_name=last_nm,
                             email=email_str,
-                            username=email_str)
+                            username=email_str,
+                            )
+            user.set_password('123456789')
             user.save()
             # print(first_name,last_name,email)
 
