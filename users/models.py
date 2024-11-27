@@ -1,7 +1,7 @@
-from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from lms.models import Lesson, Course
+
+from lms.models import Course, Lesson
 
 NULLABLE = {"blank": True, "null": True}
 
@@ -51,12 +51,34 @@ class Payments(models.Model):
         ("no-cash", "Безналичная оплата"),
     ]
 
-    user_pay = models.ForeignKey(CustomUser, verbose_name="Пользователь", on_delete=models.CASCADE,related_name="pays")
-    pay_course = models.ForeignKey(Course, verbose_name="Оплаченный курс",null=True,blank=True, on_delete=models.SET_NULL)
-    pay_lesson = models.ForeignKey(Lesson, verbose_name="Оплаченный курс",null=True,blank=True, on_delete=models.SET_NULL)
+    user_pay = models.ForeignKey(
+        CustomUser,
+        verbose_name="Пользователь",
+        on_delete=models.CASCADE,
+        related_name="pays",
+    )
+    pay_course = models.ForeignKey(
+        Course,
+        verbose_name="Оплаченный курс",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+    pay_lesson = models.ForeignKey(
+        Lesson,
+        verbose_name="Оплаченный курс",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
     date_pay = models.DateField(verbose_name="Дата оплаты")
     summ = models.PositiveIntegerField(verbose_name="Сумма")
-    pay_type = models.CharField(max_length=10, choices=STATUS_CHOICES, default="cash", verbose_name="Тип платежа")
+    pay_type = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default="cash",
+        verbose_name="Тип платежа",
+    )
 
     class Meta:
         verbose_name = "Платеж"

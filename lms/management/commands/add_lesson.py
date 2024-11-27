@@ -1,9 +1,10 @@
-from django.core.management.base import BaseCommand
-from django.core.management import call_command
-from lms.models import Course, Lesson
 import os
 
 from django.conf import settings
+from django.core.management import call_command
+from django.core.management.base import BaseCommand
+
+from lms.models import Course, Lesson
 
 
 class Command(BaseCommand):
@@ -13,5 +14,9 @@ class Command(BaseCommand):
         # Удаляем существующие записи
         Lesson.objects.all().delete()
         Course.objects.all().delete()
-        call_command("loaddata", os.path.join(settings.BASE_DIR, "data","course_fixture.json"))
-        call_command("loaddata", os.path.join(settings.BASE_DIR, "data","lesson_fixture.json"))
+        call_command(
+            "loaddata", os.path.join(settings.BASE_DIR, "data", "course_fixture.json")
+        )
+        call_command(
+            "loaddata", os.path.join(settings.BASE_DIR, "data", "lesson_fixture.json")
+        )

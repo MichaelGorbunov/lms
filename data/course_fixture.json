@@ -5,7 +5,8 @@
     "fields": {
         "title": "Курс-1",
         "description": "Курс-1 Курс-1 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 5
     }
 },
 {
@@ -14,7 +15,8 @@
     "fields": {
         "title": "Курс-2",
         "description": "Курс-2 Курс-2 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 2
     }
 },
 {
@@ -23,7 +25,8 @@
     "fields": {
         "title": "Курс-3",
         "description": "Курс-3 Курс-3 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 2
     }
 },
 {
@@ -32,7 +35,8 @@
     "fields": {
         "title": "Курс-4",
         "description": "Курс-4 Курс-4 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 5
     }
 },
 {
@@ -41,7 +45,8 @@
     "fields": {
         "title": "Курс-5",
         "description": "Курс-5 Курс-5 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 4
     }
 },
 {
@@ -50,7 +55,8 @@
     "fields": {
         "title": "Курс-6",
         "description": "Курс-6 Курс-6 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 4
     }
 },
 {
@@ -59,7 +65,8 @@
     "fields": {
         "title": "Курс-7",
         "description": "Курс-7 Курс-7 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 3
     }
 },
 {
@@ -68,7 +75,8 @@
     "fields": {
         "title": "Курс-8",
         "description": "Курс-8 Курс-8 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 3
     }
 },
 {
@@ -77,7 +85,8 @@
     "fields": {
         "title": "Курс-9",
         "description": "Курс-9 Курс-9 ",
-        "preview": "lms/courses/default.jpg"
+        "preview": "lms/courses/default.jpg",
+        "owner": 2
     }
 }
 ]

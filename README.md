@@ -24,3 +24,7 @@ http://localhost:8000/lms/lesson/
 http://localhost:8000/users/pay_list/
 
 платежи
+
+http://localhost:8000/users/user/
+
+работа с пользователями
