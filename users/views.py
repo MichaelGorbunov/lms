@@ -8,6 +8,7 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.contrib.auth.models import User
+from users.permissions import IsProfileOwner
 
 
 class CustomUserViewSet(viewsets.ModelViewSet):
@@ -36,6 +37,8 @@ class CustomUserViewSet(viewsets.ModelViewSet):
         if self.action in ['retrieve', 'update', 'partial_update']:
             user = self.get_object()
             if self.request.user == user:
+            # if self.request.user.user_permissions == IsProfileOwner:
+
                 return CustomUserDetailSerializer  # Если пользователь владелец, используем полный сериализатор
             else:
                 return CustomUserSerializer  # В противном случае - ограниченный
