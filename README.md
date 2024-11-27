@@ -7,6 +7,7 @@ Learning Management System
 * установите зависимости
 * измените файл `.env_sample` и сохраните как `.env`
 * примените миграции
+* используйте кастомные команды для создания материалов и пользователей
 * запустите сервер
 
 `postman`
@@ -20,6 +21,6 @@ http://localhost:8000/lms/lesson/
 уроки
 
 
-~~http://localhost:8000/users/user~~
+http://localhost:8000/users/pay_list/
 
-~~пользователи~~
+платежи

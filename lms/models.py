@@ -12,7 +12,7 @@ class Course(models.Model):
         verbose_name="Описание курса", help_text="Course Description", **NULLABLE
     )
     preview = models.ImageField(
-        upload_to="lms/courses",
+        upload_to="lms/courses/",
         verbose_name="Превью курса",
         help_text="Course Preview",
         default="lms/courses/default.jpg",
@@ -30,7 +30,8 @@ class Course(models.Model):
 
 class Lesson(models.Model):
     course = models.ForeignKey(
-        Course, verbose_name="Курс", on_delete=models.SET_NULL, **NULLABLE
+        Course, verbose_name="Курс", on_delete=models.SET_NULL, **NULLABLE,
+        related_name="lessons"
     )
     title = models.CharField(
         max_length=150, verbose_name="Название урока", help_text="Lesson Title"
@@ -39,7 +40,7 @@ class Lesson(models.Model):
         verbose_name="Описание урока", help_text="Lesson Description"
     )
     preview = models.ImageField(
-        upload_to="lms/lessons",
+        upload_to="lms/lessons/",
         verbose_name="Превью урока",
         help_text="Lessons Preview",
         default="lms/lessons/default.jpg",
