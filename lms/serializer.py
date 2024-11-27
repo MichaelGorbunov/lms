@@ -8,6 +8,8 @@ class LessonSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+
+
 class CourseSerializer(serializers.ModelSerializer):
     # lesson_list = serializers.SerializerMethodField(read_only=True)
     lesson = LessonSerializer(many=True, read_only=True, source='lessons')

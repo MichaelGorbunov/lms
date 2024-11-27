@@ -20,6 +20,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 class LessonCreateAPIView(generics.CreateAPIView):
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, ~IsModerator,)
+    # permission_classes = ( ~IsModerator,)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
