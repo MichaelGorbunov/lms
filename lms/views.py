@@ -1,10 +1,9 @@
 from rest_framework import generics, viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from lms.models import Course, Lesson
 from lms.serializer import CourseSerializer, LessonSerializer
-
 from users.permissions import IsModerator, IsOwner
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -19,7 +18,7 @@ class CourseViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         # Проверяем, состоит ли пользователь в группе "Модераторы"
-        if user.groups.filter(name='Moderators').exists():
+        if user.groups.filter(name="Moderators").exists():
             # Если состоит, возвращаем весь queryset
             return Course.objects.all()
         else:
@@ -29,7 +28,10 @@ class CourseViewSet(viewsets.ModelViewSet):
 
 class LessonCreateAPIView(generics.CreateAPIView):
     serializer_class = LessonSerializer
-    permission_classes = (IsAuthenticated, ~IsModerator,)
+    permission_classes = (
+        IsAuthenticated,
+        ~IsModerator,
+    )
 
     # permission_classes = ( ~IsModerator,)
 

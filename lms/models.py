@@ -1,7 +1,6 @@
 from django.db import models
+
 from config import settings
-
-
 
 # Create your models here.
 NULLABLE = {"blank": True, "null": True}
@@ -21,8 +20,14 @@ class Course(models.Model):
         default="lms/courses/default.jpg",
         **NULLABLE
     )
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Владелец",
-                              help_text="укажите владельца")
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Владелец",
+        help_text="укажите владельца",
+    )
 
     def __str__(self):
         return self.title
@@ -35,7 +40,10 @@ class Course(models.Model):
 
 class Lesson(models.Model):
     course = models.ForeignKey(
-        Course, verbose_name="Курс", on_delete=models.SET_NULL, **NULLABLE,
+        Course,
+        verbose_name="Курс",
+        on_delete=models.SET_NULL,
+        **NULLABLE,
         related_name="lessons"
     )
     title = models.CharField(
@@ -54,8 +62,14 @@ class Lesson(models.Model):
     video_url = models.URLField(
         verbose_name="Ссылка на урок", help_text="Video URL", **NULLABLE
     )
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Владелец",
-                              help_text="укажите владельца")
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Владелец",
+        help_text="укажите владельца",
+    )
 
     def __str__(self):
         return self.title
