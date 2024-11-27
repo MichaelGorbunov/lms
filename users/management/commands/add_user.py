@@ -13,11 +13,11 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # Удаляем существующие записи
         Payments.objects.all().delete()
-        CustomUser.objects.all().delete()
-
-        call_command(
-            "loaddata", os.path.join(settings.BASE_DIR, "data", "users_fixture.json")
-        )
+        # CustomUser.objects.all().delete()
+        #
+        # call_command(
+        #     "loaddata", os.path.join(settings.BASE_DIR, "data", "users_fixture.json")
+        # )
         call_command(
             "loaddata", os.path.join(settings.BASE_DIR, "data", "payments_fixture.json")
         )
