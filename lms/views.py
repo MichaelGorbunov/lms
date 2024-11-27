@@ -16,6 +16,16 @@ class CourseViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+    def get_queryset(self):
+        user = self.request.user
+        # Проверяем, состоит ли пользователь в группе "Модераторы"
+        if user.groups.filter(name='Moderators').exists():
+            # Если состоит, возвращаем весь queryset
+            return Course.objects.all()
+        else:
+            # Если не состоит, фильтруем по owner
+            return Course.objects.filter(owner=user)
+
 
 class LessonCreateAPIView(generics.CreateAPIView):
     serializer_class = LessonSerializer
