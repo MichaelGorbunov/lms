@@ -2,7 +2,7 @@ from rest_framework import viewsets, generics
 from django_filters.rest_framework import DjangoFilterBackend
 
 from users.models import CustomUser, Payments
-from users.serializer import CustomUserSerializer, PaymentSerializer
+from users.serializer import CustomUserSerializer, PaymentSerializer,CustomUserDetailSerializer
 from rest_framework.filters import OrderingFilter
 from rest_framework import viewsets, permissions, status
 from rest_framework.permissions import AllowAny
@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 class CustomUserViewSet(viewsets.ModelViewSet):
     """viewset модели customuser"""
 
-    serializer_class = CustomUserSerializer
+    # serializer_class = CustomUserSerializer
     queryset = CustomUser.objects.all()
     permission_classes = (AllowAny,)  # Пзволяем создавать пользователей без авторизации
 
@@ -31,6 +31,15 @@ class CustomUserViewSet(viewsets.ModelViewSet):
         # Устанавливаем хешированный пароль
         user.set_password(user.password)
         user.save()
+
+    def get_serializer_class(self):
+        if self.action in ['retrieve', 'update', 'partial_update']:
+            user = self.get_object()
+            if self.request.user == user:
+                return CustomUserDetailSerializer  # Если пользователь владелец, используем полный сериализатор
+            else:
+                return CustomUserSerializer  # В противном случае - ограниченный
+        return CustomUserSerializer
 
 class PaymentsViewSet(viewsets.ModelViewSet):
     """работа с платежами"""
