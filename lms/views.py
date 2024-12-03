@@ -1,10 +1,13 @@
 from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
 
-from lms.models import Course, Lesson
+from lms.models import Course, Lesson, Subscription
 from lms.paginators import CoursePaginator, LessonPaginator
-from lms.serializer import CourseSerializer, LessonSerializer
+from lms.serializer import CourseSerializer, LessonSerializer, SubscriptionSerializer
 from users.permissions import IsModerator, IsOwner
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -77,3 +80,24 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
 class LessonDestroyAPIView(generics.DestroyAPIView):
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, ~IsModerator | IsOwner)
+
+
+
+
+class SubscriptionAPIView(APIView):
+    serializer_class = SubscriptionSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, *args, **kwargs):
+        user = self.request.user
+        course_id = self.request.data.get("course")
+        course = get_object_or_404(Course, pk=course_id)
+        sub_item = Subscription.objects.all().filter(user=user).filter(course=course)
+
+        if sub_item.exists():
+            sub_item.delete()
+            message = "Подписка удалена"
+        else:
+            Subscription.objects.create(user=user, course=course)
+            message = "Подписка добавлена"
+        return Response({"message": message})
