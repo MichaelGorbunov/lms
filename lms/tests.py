@@ -5,6 +5,7 @@ from rest_framework.test import APITestCase
 from lms.models import Lesson, Course, Subscription
 from users.models import CustomUser
 
+
 class SubscriptionTestCase(APITestCase):
     """тестирование подписки"""
 
@@ -48,6 +49,7 @@ class SubscriptionTestCase(APITestCase):
             data, {'message': 'Подписка удалена'}
         )
 
+
 class LessonTestCase(APITestCase):
 
     def setUp(self):
@@ -56,8 +58,6 @@ class LessonTestCase(APITestCase):
         self.lesson = Lesson.objects.create(title='lesson_test', description='lesson_test', course=self.course,
                                             owner=self.user)
         self.client.force_authenticate(user=self.user)
-
-
 
     def test_lesson_create(self):
         url = reverse('lms:lesson-create')
@@ -72,6 +72,7 @@ class LessonTestCase(APITestCase):
         self.assertEqual(
             Lesson.objects.all().count(), 2
         )
+
     def test_lesson_retrieve(self):
         url = reverse('lms:lesson-get', args=(self.lesson.pk,))
         response = self.client.get(url)
@@ -179,9 +180,43 @@ class CourseTestCase(APITestCase):
     def test_course_list(self):
         url = "/lms/course/"
         response = self.client.get(url)
-        print(response.json())
-        data = response.json()
 
+        data = response.json()
+        print(data)
+        result = {
+            "count": 1,
+            "next": None,
+            "previous": None,
+            "results": [
+                {
+                    "pk": self.course.pk,
+                    "title": self.course.title,
+                    "description": self.course.description,
+                    "lesson": [
+                        {
+                            "id": self.lesson.pk,
+                            "title": self.lesson.title,
+                            "description": self.lesson.description,
+                            "preview": "http://testserver/media/lms/lessons/default.jpg",
+                            "video_url": None,
+                            "course": self.course.pk,
+                            "owner": self.user.pk
+                        }
+                    ],
+                    "lesson_count": self.course.lessons.count(),
+                    "owner": self.user.pk,
+                    "preview": "http://testserver/media/lms/courses/default.jpg",
+                    "subscription": False
+                }
+            ]
+        }
+        print(result)
         self.assertEqual(
             response.status_code, status.HTTP_200_OK
         )
+        self.assertEqual(
+            data, result
+        )
+# coverage run --source='.' manage.py test
+# coverage report
+
