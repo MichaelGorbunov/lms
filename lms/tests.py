@@ -115,3 +115,73 @@ class LessonTestCase(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Lesson.objects.all().count(), 1)
+
+
+class CourseTestCase(APITestCase):
+
+    def setUp(self):
+        self.user = CustomUser.objects.create(email='admin@example.com')
+        self.course = Course.objects.create(title='course_test', description='course_test', owner=self.user)
+        self.lesson = Lesson.objects.create(title='lesson_test', description='lesson_test', course=self.course,
+                                            owner=self.user)
+        self.client.force_authenticate(user=self.user)
+
+    def test_course_retrieve(self):
+        url = f"/lms/course/{self.course.pk}/"
+        response = self.client.get(url)
+        data = response.json()
+        self.assertEqual(
+            response.status_code, status.HTTP_200_OK
+        )
+        self.assertEqual(
+            data.get('title'), self.course.title
+        )
+
+    def test_course_create(self):
+        url = "/lms/course/"
+        data = {
+            'title': 'course_test',
+            'description': 'course_test'
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(
+            response.status_code, status.HTTP_201_CREATED
+        )
+        self.assertEqual(
+            Course.objects.all().count(), 2
+        )
+
+    def test_course_update(self):
+        url = f"/lms/course/{self.course.pk}/"
+        data = {
+            'title': 'Python'
+        }
+        response = self.client.patch(url, data)
+        data = response.json()
+        self.assertEqual(
+            response.status_code, status.HTTP_200_OK
+        )
+        self.assertEqual(
+            data.get('title'), 'Python'
+        )
+
+    def test_course_delete(self):
+        url = f"/lms/course/{self.course.pk}/"
+
+        response = self.client.delete(url)
+        self.assertEqual(
+            response.status_code, status.HTTP_204_NO_CONTENT
+        )
+        self.assertEqual(
+            Course.objects.all().count(), 0
+        )
+
+    def test_course_list(self):
+        url = "/lms/course/"
+        response = self.client.get(url)
+        print(response.json())
+        data = response.json()
+
+        self.assertEqual(
+            response.status_code, status.HTTP_200_OK
+        )
