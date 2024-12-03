@@ -68,7 +68,8 @@ class LessonListAPIView(generics.ListAPIView):
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-    permission_classes = (IsAuthenticated, IsModerator, IsOwner)
+    # permission_classes = (IsAuthenticated, IsModerator, IsOwner)
+    permission_classes = (IsAuthenticated, IsModerator | IsOwner)
 
 
 class LessonUpdateAPIView(generics.UpdateAPIView):
