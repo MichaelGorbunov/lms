@@ -28,3 +28,7 @@ http://localhost:8000/users/pay_list/
 http://localhost:8000/users/user/
 
 работа с пользователями
+
+http://localhost:8000/lms/subscription/
+
+добавление/отмена подписки
