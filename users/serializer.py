@@ -1,12 +1,16 @@
 from rest_framework import serializers
 
 from users.models import CustomUser, Payments
+from users.validators import PaymentValidator
 
 
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payments
-        fields = "__all__"
+        fields = '__all__'
+        validators = [
+            PaymentValidator(fields=['pay_lesson', 'pay_course']),
+        ]
 
 
 class CustomUserDetailSerializer(serializers.ModelSerializer):

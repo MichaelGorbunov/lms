@@ -22,6 +22,11 @@ http://localhost:8000/lms/lesson/
 
 
 http://localhost:8000/users/pay_list/
+http://localhost:8000/users/pay/ 
+{"date_pay":"2024-11-06",
+"summ":100,
+"pay_course":3,
+"user_pay":3}
 
 платежи
 

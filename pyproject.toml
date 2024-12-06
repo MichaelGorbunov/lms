@@ -32,12 +32,12 @@ djangorestframework-simplejwt = "^5.3.1"
 coverage = "^7.6.8"
 
 
-[tool.poetry.group.docs.dependencies]
-drf-yasg = "^1.21.8"
-
-
 [tool.poetry.group.pays.dependencies]
 stripe = "^11.3.0"
+
+
+[tool.poetry.group.docs.dependencies]
+drf-yasg = "^1.21.8"
 
 [build-system]
 requires = ["poetry-core"]

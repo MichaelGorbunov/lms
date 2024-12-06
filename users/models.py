@@ -60,6 +60,7 @@ class Payments(models.Model):
     pay_course = models.ForeignKey(
         Course,
         verbose_name="Оплаченный курс",
+        related_name='payment_courses',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -67,6 +68,7 @@ class Payments(models.Model):
     pay_lesson = models.ForeignKey(
         Lesson,
         verbose_name="Оплаченный курс",
+        related_name='payment_lesson',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -79,7 +81,7 @@ class Payments(models.Model):
         default="cash",
         verbose_name="Тип платежа",
     )
-    payment_link = models.CharField(max_length=350,
+    payment_link = models.CharField(max_length=500,
                                     verbose_name="Ссылка на оплату",
                                     blank=True, null=True)
     session_id = models.CharField(verbose_name="id сессии",

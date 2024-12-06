@@ -44,11 +44,33 @@ class CustomUserViewSet(viewsets.ModelViewSet):
         return CustomUserSerializer
 
 
-class PaymentsViewSet(viewsets.ModelViewSet):
-    """работа с платежами"""
+# class PaymentsViewSet(viewsets.ModelViewSet):
+#     """работа с платежами"""
+#
+#     serializer_class = PaymentSerializer
+#     queryset = Payments.objects.all()
 
+
+
+class PaymentsViewSet(viewsets.ModelViewSet):
     serializer_class = PaymentSerializer
     queryset = Payments.objects.all()
+    filter_backends = [OrderingFilter, DjangoFilterBackend]
+    ordering_fields = ("date_pay",)
+    filterset_fields = ("pay_type", "pay_course", "pay_lesson",)
+    permission_classes = [IsAuthenticated]
+
+
+    def perform_create(self, serializer):
+        payment = serializer.save(user_pay=self.request.user)
+        creation_item = create_product(payment.pay_lesson or payment.pay_course)
+        amount = create_stripe_price(payment.summ, creation_item)
+
+        session_id, payment_link = create_session(amount)
+        payment.payment_link = payment_link
+        payment.session_id = session_id
+
+        payment.save()
 
 
 class PaymentListView(generics.ListAPIView):
