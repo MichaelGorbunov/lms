@@ -59,3 +59,5 @@ class PaymentListView(generics.ListAPIView):
     filter_backends = [OrderingFilter, DjangoFilterBackend]
     ordering_fields = ["date_pay"]
     filterset_fields = ["pay_type", "pay_course", "pay_lesson"]
+
+

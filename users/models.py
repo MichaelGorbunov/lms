@@ -85,8 +85,8 @@ class Payments(models.Model):
     session_id = models.CharField(verbose_name="id сессии",
                                   blank=True, null=True)
 
-    def __str__(self):
-        return f"pk: {self.pk} user pk: {self.user_pay.pk}"
+    # def __str__(self):
+    #     return f"pk: {self.pk} user pk: {self.user_pay.pk}"
 
     class Meta:
         verbose_name = "Платеж"
