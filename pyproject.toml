@@ -35,6 +35,10 @@ coverage = "^7.6.8"
 [tool.poetry.group.docs.dependencies]
 drf-yasg = "^1.21.8"
 
+
+[tool.poetry.group.pays.dependencies]
+stripe = "^11.3.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
