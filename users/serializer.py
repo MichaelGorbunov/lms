@@ -7,9 +7,9 @@ from users.validators import PaymentValidator
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payments
-        fields = '__all__'
+        fields = "__all__"
         validators = [
-            PaymentValidator(fields=['pay_lesson', 'pay_course']),
+            PaymentValidator(fields=["pay_lesson", "pay_course"]),
         ]
 
 

@@ -18,7 +18,7 @@ class Course(models.Model):
         verbose_name="Превью курса",
         help_text="Course Preview",
         default="lms/courses/default.jpg",
-        **NULLABLE
+        **NULLABLE,
     )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -44,7 +44,7 @@ class Lesson(models.Model):
         verbose_name="Курс",
         on_delete=models.SET_NULL,
         **NULLABLE,
-        related_name="lessons"
+        related_name="lessons",
     )
     title = models.CharField(
         max_length=150, verbose_name="Название урока", help_text="Lesson Title"
@@ -57,7 +57,7 @@ class Lesson(models.Model):
         verbose_name="Превью урока",
         help_text="Lessons Preview",
         default="lms/lessons/default.jpg",
-        **NULLABLE
+        **NULLABLE,
     )
     video_url = models.URLField(
         verbose_name="Ссылка на урок", help_text="Video URL", **NULLABLE
@@ -79,9 +79,14 @@ class Lesson(models.Model):
         verbose_name_plural = "уроки"
         ordering = ["title"]
 
+
 class Subscription(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Пользователь", on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, verbose_name="Курс в подписке", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name="Пользователь", on_delete=models.CASCADE
+    )
+    course = models.ForeignKey(
+        Course, verbose_name="Курс в подписке", on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return f"{self.user} - {self.course}"

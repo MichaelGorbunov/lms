@@ -42,15 +42,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-
     "users",
     "lms",
     "django_filters",
     "rest_framework_simplejwt",
-
-# 'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
-   "drf_yasg",
-
+    # 'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -164,4 +161,4 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
 }
 
-STRIPE_API_KEY=os.getenv("STRIPE_API_KEY")
+STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")

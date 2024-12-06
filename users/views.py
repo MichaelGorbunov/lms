@@ -6,8 +6,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from users.models import CustomUser, Payments
 from users.serializer import (CustomUserDetailSerializer, CustomUserSerializer,
                               PaymentSerializer)
-from users.servises import create_product, create_stripe_price, create_session
-from rest_framework import generics
+from users.servises import create_product, create_session, create_stripe_price
+
 
 class CustomUserViewSet(viewsets.ModelViewSet):
     """viewset модели customuser"""
@@ -51,15 +51,17 @@ class CustomUserViewSet(viewsets.ModelViewSet):
 #     queryset = Payments.objects.all()
 
 
-
 class PaymentsViewSet(viewsets.ModelViewSet):
     serializer_class = PaymentSerializer
     queryset = Payments.objects.all()
     filter_backends = [OrderingFilter, DjangoFilterBackend]
     ordering_fields = ("date_pay",)
-    filterset_fields = ("pay_type", "pay_course", "pay_lesson",)
+    filterset_fields = (
+        "pay_type",
+        "pay_course",
+        "pay_lesson",
+    )
     permission_classes = [IsAuthenticated]
-
 
     def perform_create(self, serializer):
         payment = serializer.save(user_pay=self.request.user)
@@ -81,5 +83,3 @@ class PaymentListView(generics.ListAPIView):
     filter_backends = [OrderingFilter, DjangoFilterBackend]
     ordering_fields = ["date_pay"]
     filterset_fields = ["pay_type", "pay_course", "pay_lesson"]
-
-
