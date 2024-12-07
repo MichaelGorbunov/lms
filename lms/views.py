@@ -1,13 +1,14 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
-from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from lms.models import Course, Lesson, Subscription
 from lms.paginators import CoursePaginator, LessonPaginator
-from lms.serializer import CourseSerializer, LessonSerializer, SubscriptionSerializer
+from lms.serializer import (CourseSerializer, LessonSerializer,
+                            SubscriptionSerializer)
 from users.permissions import IsModerator, IsOwner
-from rest_framework.views import APIView
-from rest_framework.response import Response
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -16,7 +17,7 @@ class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
     pagination_class = CoursePaginator
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -32,15 +33,15 @@ class CourseViewSet(viewsets.ModelViewSet):
             return Course.objects.filter(owner=user)
 
     def get_permissions(self):
-        if self.action in ['retrieve', 'update', 'partial_update']:
+        if self.action in ["retrieve", "update", "partial_update"]:
             self.permission_classes = [IsAuthenticated, IsOwner | IsModerator]
 
-        elif self.action in ['destroy']:
+        elif self.action in ["destroy"]:
             # self.permission_classes = [IsAuthenticated, ~IsModerator, IsOwner]
             self.permission_classes = [IsAuthenticated, IsOwner]
-        elif self.action in ['create']:
+        elif self.action in ["create"]:
             self.permission_classes = [IsAuthenticated, ~IsModerator]
-        elif self.action in ['list']:
+        elif self.action in ["list"]:
             self.permission_classes = [IsAuthenticated, IsModerator | IsOwner]
 
         return super().get_permissions()
@@ -82,8 +83,6 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
 class LessonDestroyAPIView(generics.DestroyAPIView):
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, ~IsModerator | IsOwner)
-
-
 
 
 class SubscriptionAPIView(APIView):

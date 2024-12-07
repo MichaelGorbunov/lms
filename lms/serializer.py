@@ -9,7 +9,7 @@ class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
         fields = "__all__"
-        validators = [LinkValidator(field='video_url')]
+        validators = [LinkValidator(field="video_url")]
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -30,8 +30,10 @@ class CourseSerializer(serializers.ModelSerializer):
     #     return LessonSerializer(obj.lessons.all(), many=True).data
 
     def get_subscription(self, course):
-        user = self.context['request'].user
-        return Subscription.objects.all().filter(user=user).filter(course=course).exists()
+        user = self.context["request"].user
+        return (
+            Subscription.objects.all().filter(user=user).filter(course=course).exists()
+        )
 
     class Meta:
         model = Course
@@ -47,8 +49,9 @@ class CourseSerializer(serializers.ModelSerializer):
             "subscription",
         )
 
+
 class SubscriptionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Subscription
-        fields = '__all__'
+        fields = "__all__"
