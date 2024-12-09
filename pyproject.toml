@@ -39,6 +39,11 @@ stripe = "^11.3.0"
 [tool.poetry.group.docs.dependencies]
 drf-yasg = "^1.21.8"
 
+
+[tool.poetry.group.task_man.dependencies]
+celery = "^5.4.0"
+django-celery-beat = "^2.7.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
