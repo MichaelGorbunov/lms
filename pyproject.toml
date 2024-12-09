@@ -44,6 +44,8 @@ drf-yasg = "^1.21.8"
 celery = "^5.4.0"
 django-celery-beat = "^2.7.0"
 redis = "^5.2.1"
+django-celery-results = "^2.5.1"
+eventlet = "^0.38.0"
 
 [build-system]
 requires = ["poetry-core"]

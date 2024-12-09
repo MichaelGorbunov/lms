@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     # 'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
     "drf_yasg",
+    "django_celery_beat",
+    "django_celery_results"
 ]
 
 MIDDLEWARE = [
@@ -117,8 +119,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
-
+# TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Moscow"
 USE_I18N = True
 
 USE_TZ = True
@@ -177,9 +179,17 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 # Максимальное время на выполнение задачи
 CELERY_TASK_TIME_LIMIT = 30 * 60
-
 # Максимальное время на выполнение задачи
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+CELERY_BEAT_SCHEDULE = {
+    "check_active_users": {
+        "task": "users.tasks.check_active_users", # Путь к задаче
+        "schedule": timedelta(minutes=1), # Расписание выполнения задачи (например, каждые 1 day)
+    },
+}
+
 
 
 EMAIL_HOST = os.getenv('EMAIL_HOST')

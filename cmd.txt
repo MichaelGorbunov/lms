@@ -1,0 +1,1 @@
+celery -A config worker -P eventlet --loglevel=info
