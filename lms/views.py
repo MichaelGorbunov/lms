@@ -8,6 +8,7 @@ from lms.models import Course, Lesson, Subscription
 from lms.paginators import CoursePaginator, LessonPaginator
 from lms.serializer import (CourseSerializer, LessonSerializer,
                             SubscriptionSerializer)
+from lms.task import add_numbers
 from users.permissions import IsModerator, IsOwner
 
 
@@ -23,6 +24,8 @@ class CourseViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
     def get_queryset(self):
+        # запуск задачи
+        add_numbers()
         user = self.request.user
         # Проверяем, состоит ли пользователь в группе "Модераторы"
         if user.groups.filter(name="Moderators").exists():
