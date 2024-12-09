@@ -186,7 +186,7 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 CELERY_BEAT_SCHEDULE = {
     "check_active_users": {
         "task": "users.tasks.check_active_users", # Путь к задаче
-        "schedule": timedelta(minutes=1), # Расписание выполнения задачи (например, каждые 1 day)
+        "schedule": timedelta(days=1), # Расписание выполнения задачи (например, каждые 1 day)
     },
 }
 

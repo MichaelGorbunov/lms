@@ -1,1 +1,5 @@
 celery -A config worker -P eventlet --loglevel=info
+celery -A config beat --loglevel=info
+python manage.py migrate django_celery_beat
+python.exe -m celery -A config beat --loglevel=info
+celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
