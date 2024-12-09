@@ -24,8 +24,8 @@ class CourseViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
     def get_queryset(self):
-        # запуск задачи
-        add_numbers()
+        # # запуск задачи
+        # add_numbers()
         user = self.request.user
         # Проверяем, состоит ли пользователь в группе "Модераторы"
         if user.groups.filter(name="Moderators").exists():
