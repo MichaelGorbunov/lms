@@ -43,6 +43,7 @@ drf-yasg = "^1.21.8"
 [tool.poetry.group.task_man.dependencies]
 celery = "^5.4.0"
 django-celery-beat = "^2.7.0"
+redis = "^5.2.1"
 
 [build-system]
 requires = ["poetry-core"]

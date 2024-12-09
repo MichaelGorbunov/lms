@@ -199,3 +199,4 @@ EMAIL_USE_SSL = True
 # # на почту
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH=os.path.join(BASE_DIR, "mail")
+
