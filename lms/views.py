@@ -8,7 +8,9 @@ from lms.models import Course, Lesson, Subscription
 from lms.paginators import CoursePaginator, LessonPaginator
 from lms.serializer import (CourseSerializer, LessonSerializer,
                             SubscriptionSerializer)
+from lms.task import send_email_to_subs_after_updating_course
 from users.permissions import IsModerator, IsOwner
+# from users.task import check_active_users
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -23,6 +25,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
     def get_queryset(self):
+
         user = self.request.user
         # Проверяем, состоит ли пользователь в группе "Модераторы"
         if user.groups.filter(name="Moderators").exists():
@@ -45,6 +48,13 @@ class CourseViewSet(viewsets.ModelViewSet):
             self.permission_classes = [IsAuthenticated, IsModerator | IsOwner]
 
         return super().get_permissions()
+
+    def perform_update(self, serializer):
+        """отправка сообщения об обновлении курса"""
+        instance = serializer.save()
+        send_email_to_subs_after_updating_course.delay(instance.pk)
+        # send_email_to_subs_after_updating_course(instance.pk)
+
 
 
 class LessonCreateAPIView(generics.CreateAPIView):

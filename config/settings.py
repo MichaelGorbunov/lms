@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     # 'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
     "drf_yasg",
+    "django_celery_beat",
+    "django_celery_results"
 ]
 
 MIDDLEWARE = [
@@ -117,8 +119,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
-
+# TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Moscow"
 USE_I18N = True
 
 USE_TZ = True
@@ -162,3 +164,49 @@ SIMPLE_JWT = {
 }
 
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")
+
+# settings.py
+
+# Настройки для Celery
+# URL-адрес брокера сообщений
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
+# URL-адрес брокера результатов, также Redis
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+# Часовой пояс для работы Celery
+CELERY_TIMEZONE = TIME_ZONE
+# Флаг отслеживания выполнения задач
+CELERY_TASK_TRACK_STARTED = True
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+# Максимальное время на выполнение задачи
+CELERY_TASK_TIME_LIMIT = 30 * 60
+# Максимальное время на выполнение задачи
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+CELERY_BEAT_SCHEDULE = {
+    "check_active_users": {
+        "task": "users.tasks.check_active_users", # Путь к задаче
+        "schedule": timedelta(days=1), # Расписание выполнения задачи (например, каждые 1 day)
+    },
+}
+
+
+
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+#необходимо в настройках аккаунта яндекс, проставить галочки во вкладке "почтовые программы"
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_SSL = True
+# EMAIL_USE_SSL = False
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_SERVER = EMAIL_HOST_USER
+# EMAIL_ADMIN = EMAIL_HOST_USER
+# RECIPIENTS_EMAIL = os.getenv('RECIPIENTS_EMAIL').split(",")
+# # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# #выводим в консоль
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# # на почту
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH=os.path.join(BASE_DIR, "mail")
+
