@@ -3,3 +3,10 @@ celery -A config beat --loglevel=info
 python manage.py migrate django_celery_beat
 python.exe -m celery -A config beat --loglevel=info
 celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+celery -A tasks worker --loglevel=info --pool=solo
+
+from django_celery_beat.models import PeriodicTask
+tasks = PeriodicTask.objects.all()
+for task in tasks:
+    print(f"Задача: {task.name}, включена: {task.enabled}, интервал: {task.interval}, расписание: {task.crontab}")
+
