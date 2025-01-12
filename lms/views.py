@@ -10,6 +10,8 @@ from lms.serializer import (CourseSerializer, LessonSerializer,
                             SubscriptionSerializer)
 from lms.task import send_email_to_subs_after_updating_course
 from users.permissions import IsModerator, IsOwner
+
+
 # from users.task import check_active_users
 
 
@@ -54,7 +56,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         instance = serializer.save()
         send_email_to_subs_after_updating_course.delay(instance.pk)
         # send_email_to_subs_after_updating_course(instance.pk)
-
+        # check_active_users()
 
 
 class LessonCreateAPIView(generics.CreateAPIView):

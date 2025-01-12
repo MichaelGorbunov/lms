@@ -185,16 +185,15 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 CELERY_BEAT_SCHEDULE = {
     "check_active_users": {
-        "task": "users.tasks.check_active_users", # Путь к задаче
-        "schedule": timedelta(days=1), # Расписание выполнения задачи (например, каждые 1 day)
+        "task": "users.tasks.check_active_users",  # Путь к задаче
+        # "schedule": timedelta(days=1),  # Расписание выполнения задачи (например, каждые 1 day)
+        "schedule": timedelta(seconds=60),  # Расписание выполнения задачи (например, каждые 1 day)
     },
 }
 
-
-
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-#необходимо в настройках аккаунта яндекс, проставить галочки во вкладке "почтовые программы"
+# необходимо в настройках аккаунта яндекс, проставить галочки во вкладке "почтовые программы"
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_SSL = True
@@ -208,5 +207,4 @@ EMAIL_USE_SSL = True
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # # на почту
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH=os.path.join(BASE_DIR, "mail")
-
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "mail")

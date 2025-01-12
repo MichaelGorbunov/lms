@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
-from users.models import CustomUser, Payments
+from users.models import Payments
 
 
 class Command(BaseCommand):
