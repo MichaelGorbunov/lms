@@ -162,7 +162,7 @@ cython_debug/
 .idea/
 
 #mgorby
-di4/
+.di4/
 /poetry.lock
 /lint.cmd
 /lint_add.cmd
