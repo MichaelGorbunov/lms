@@ -102,18 +102,18 @@ jobs:
 
 
 
-#      - name: Copy project files to server
-#        run: |
-#          rsync -avz --exclude '__pycache__' --exclude '.git' . ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_DIR }}
-#
-#      - name: Create .env file on server
-#        run: |
-#          ssh  ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-#            echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" > ${{ secrets.DEPLOY_DIR }}/.env1
-#            echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ${{ secrets.DEPLOY_DIR }}/.env1
-#            echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> ${{ secrets.DEPLOY_DIR }}/.env1
-#            # Добавьте другие переменные окружения по необходимости
-#          EOF
+      - name: Copy project files to server
+        run: |
+          rsync -avz --exclude '__pycache__' --exclude '.git' . ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_DIR }}
+
+      - name: Create .env file on server
+        run: |
+          ssh  ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" > ${{ secrets.DEPLOY_DIR }}/.env1
+            echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ${{ secrets.DEPLOY_DIR }}/.env1
+            echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> ${{ secrets.DEPLOY_DIR }}/.env1
+            # Добавьте другие переменные окружения по необходимости
+          EOF
 
 
 
