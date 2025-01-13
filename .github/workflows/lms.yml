@@ -27,11 +27,14 @@ jobs:
         db:
           image: postgres:16-alpine
           env:
-#            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
             POSTGRES_HOST: 'localhost'
-            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+            POSTGRES_DB: 'lms'
+            POSTGRES_USER: 'postgres'
+            POSTGRES_PASSWORD: 'some_password'
+#            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+#            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+#            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+#            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           ports:
             - 5432:5432
           # Если требуется, вы можете настроить ожидание
@@ -66,23 +69,33 @@ jobs:
 
         - name: Run migrations
           env:
-            SECRET_KEY: ${{ secrets.SECRET_KEY }}
-#            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+#            SECRET_KEY: ${{ secrets.SECRET_KEY }}
+##            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+#            POSTGRES_HOST: 'localhost'
+#            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+#            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+#            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+            SECRET_KEY: 'gxt&zs7&=dm(5umk20(t93a9=##j_*$vi47q!1abrmfr+iu)*$'
             POSTGRES_HOST: 'localhost'
-            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+            POSTGRES_DB: 'lms'
+            POSTGRES_USER: 'postgres'
+            POSTGRES_PASSWORD: 'some_password'
           run:
             python manage.py migrate
 
         - name: Run test
           env:
-            SECRET_KEY: ${{ secrets.SECRET_KEY }}
-#            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+            SECRET_KEY: 'gxt&zs7&=dm(5umk20(t93a9=##j_*$vi47q!1abrmfr+iu)*$'
             POSTGRES_HOST: 'localhost'
-            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+            POSTGRES_DB: 'lms'
+            POSTGRES_USER: 'postgres'
+            POSTGRES_PASSWORD: 'some_password'
+#            SECRET_KEY: ${{ secrets.SECRET_KEY }}
+##            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+#            POSTGRES_HOST: 'localhost'
+#            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+#            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+#            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           run:
             python manage.py test
 
