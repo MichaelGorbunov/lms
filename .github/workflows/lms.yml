@@ -88,7 +88,7 @@ jobs:
           export SECRET_KEY="${{ secrets.SECRET_KEY }}"
           python manage.py migrate
 
-#      - name: Run tests
-#        run: |
-#          export SECRET_KEY="${{ secrets.SECRET_KEY }}"
-#          python manage.py test
+      - name: Run tests
+        run: |
+          export SECRET_KEY="${{ secrets.SECRET_KEY }}"
+          python manage.py test
