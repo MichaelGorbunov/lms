@@ -36,21 +36,38 @@ jobs:
           echo "VIRTUAL_ENV=venv" >> $GITHUB_ENV
           echo "PATH=venv/bin:$PATH" >> $GITHUB_ENV
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+#      - name: Install dependencies
+#        run: |
+#          pip install -r requirements.txt
+      - name: Cache Python Packages
+        id: cache-python
+        uses: actions/cache@v3
+        with:
+          # pip cache files are stored in `~/.cache/pip`
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - if: ${{ steps.cache-python.outputs.cache-hit != 'true' }}
+        name: Install pip packages
+        continue-on-error: true
+        run: pip install -r ./requirements.txt
+
+      - name: List pip packages
+        run: echo "Cache Hit Status - ${{ steps.cache-python.outputs.cache-hit }}"; pip list packages
 
       - name: Set up PostgreSQL
         run: |
           sudo apt-get update
           sudo apt-get install -y postgresql-client
           sudo service postgresql start
-#          sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'rest_user_password';"
-#          sudo -u postgres psql -c "CREATE DATABASE restdatabase;"
-#          sudo -u postgres psql -c "CREATE ROLE runner WITH LOGIN PASSWORD 'rest_user_password';"
-#          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE restdatabase TO runner;"
-#          sudo -u postgres psql -c "GRANT CREATE ON SCHEMA public TO runner;"
-#          echo "DATABASE_URL=postgres://runner:rest_user_password@localhost/restdatabase" >> $GITHUB_ENV
+          sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'rest_user_password';"
+          sudo -u postgres psql -c "CREATE DATABASE restdatabase;"
+          sudo -u postgres psql -c "CREATE ROLE runner WITH LOGIN PASSWORD 'rest_user_password';"
+          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE restdatabase TO runner;"
+          sudo -u postgres psql -c "GRANT CREATE ON SCHEMA public TO runner;"
+          echo "DATABASE_URL=postgres://runner:rest_user_password@localhost/restdatabase" >> $GITHUB_ENV
 
       - name: Run makemigrations
         run: |
