@@ -27,7 +27,8 @@ jobs:
         db:
           image: postgres:16-alpine
           env:
-            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+#            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+            POSTGRES_HOST: 'localhost'
             POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
             POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
             POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
@@ -66,7 +67,8 @@ jobs:
         - name: Run migrations
           env:
             SECRET_KEY: ${{ secrets.SECRET_KEY }}
-            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+#            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+            POSTGRES_HOST: 'localhost'
             POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
             POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
             POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
@@ -76,7 +78,8 @@ jobs:
         - name: Run test
           env:
             SECRET_KEY: ${{ secrets.SECRET_KEY }}
-            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+#            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+            POSTGRES_HOST: 'localhost'
             POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
             POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
             POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
