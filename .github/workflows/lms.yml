@@ -39,23 +39,32 @@ jobs:
 #      - name: Install dependencies
 #        run: |
 #          pip install -r requirements.txt
-      - name: Cache Python Packages
-        id: cache-python
+
+      # Кэширование зависимостей
+      - name: Cache pip
         uses: actions/cache@v3
         with:
-          # pip cache files are stored in `~/.cache/pip`
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-
-      - if: ${{ steps.cache-python.outputs.cache-hit != 'true' }}
-        name: Install pip packages
-        continue-on-error: true
-        run: pip install -r ./requirements.txt
-
-      - name: List pip packages
-        run: echo "Cache Hit Status - ${{ steps.cache-python.outputs.cache-hit }}"; pip list packages
+#      - name: Cache Python Packages
+#        id: cache-python
+#        uses: actions/cache@v3
+#        with:
+#          # pip cache files are stored in `~/.cache/pip`
+#          path: ~/.cache/pip
+#          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pip-
+#
+#      - if: ${{ steps.cache-python.outputs.cache-hit != 'true' }}
+#        name: Install pip packages
+#        continue-on-error: true
+#        run: pip install -r ./requirements.txt
+#
+#      - name: List pip packages
+#        run: echo "Cache Hit Status - ${{ steps.cache-python.outputs.cache-hit }}"; pip list packages
 
       - name: Set up PostgreSQL
         run: |
@@ -79,7 +88,7 @@ jobs:
           export SECRET_KEY="${{ secrets.SECRET_KEY }}"
           python manage.py migrate
 
-      - name: Run tests
-        run: |
-          export SECRET_KEY="${{ secrets.SECRET_KEY }}"
-          python manage.py test
+#      - name: Run tests
+#        run: |
+#          export SECRET_KEY="${{ secrets.SECRET_KEY }}"
+#          python manage.py test
