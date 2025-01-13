@@ -1,0 +1,21 @@
+  GNU nano 7.2                                                                                                         lms
+# /etc/nginx/sites-available/my_site
+server {
+    listen 80;
+    server_name 185.92.73.149;
+
+    location /static/ {
+                        root /var/www/LMS/;
+    }
+
+    location /media/ {
+                        root /var/www/LMS/;
+    }
+
+    location / {
+                        include proxy_params;
+                        proxy_pass http://unix:/var/www/LMS/lms.sock;
+    }
+
+}
+

@@ -1,0 +1,25 @@
+  GNU nano 7.2                                                                                                     lms.service
+[Unit]
+Description=lms daemon
+#Requires=gunicorn.socket
+After=network.target
+
+[Service]
+#Type=notify
+User=root
+Group=www-data
+RuntimeDirectory=gunicorn
+WorkingDirectory=/var/www/LMS/
+#ExecStart=/путь/до/исполняемого/файла/gunicorn wsgi:app
+ExecStart=/var/www/LMS/venv/bin/gunicorn \
+          --access-logfile - \
+          --workers 5 \
+          --bind unix:/var/www/LMS/lms.sock \
+          config.wsgi
+#ExecReload=/bin/kill -s HUP $MAINPID
+#KillMode=mixed
+#TimeoutStopSec=5
+#PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
