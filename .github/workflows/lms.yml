@@ -3,77 +3,163 @@ name: LMC CI Pipeline
 on: [push]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.12"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install flake8
-      - name: Run Flake8
-        run: flake8 .
-
-  test:
-    runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:16-alpine
-        env:
-          POSTGRES_DB: test_db
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-          cache: 'pip'# Укажите нужную версию Python
-
-      - name: Create virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip
-
-      - name: activate
-        run: |
-          source venv/bin/activate
-
-      - name: Install dependencies
-        run: |
-          source venv/bin/activate
-          pip install -r requirements.txt          
-
-      - name: Run migrations
-        run: python manage.py migrate
+  #work
+#  lint:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#      - name: Set up Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: "3.12"
+#      - name: Install dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install flake8
+#      - name: Run Flake8
+#        run: flake8 .
 
 
+    test:
+      runs-on: ubuntu-latest
+      services:
+        db:
+          image: postgres:16-alpine
+          env:
+            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          ports:
+            - 5432:5432
+          # Если требуется, вы можете настроить ожидание
+          # чтобы PostgreSQL был доступен перед запуском миграций
+          options: >-
+            --health-cmd pg_isready
+            --health-interval 10s
+            --health-timeout 5s
+            --health-retries 5
 
-      - name: Run tests
-        env:
-          DATABASE_URL: postgres://postgres:postgres@localhost/test_db
-          SECRET_KEY: '8lu*6g0lg)9z!ba+a$ehk)xt)x%rxgb$i1&amp;022shmi1jcgihb*'
-#          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
 
-        run: python manage.py test
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.12'  # Замените на вашу версию Python
+  #          cache: 'pip'
+        - name: Cache pip
+          uses: actions/cache@v3
+          with:
+            path: ~/.cache/pip
+            key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+            restore-keys: |
+              ${{ runner.os }}-pip-
+
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+
+        - name: Run database migrations
+          env:
+            SECRET_KEY: ${{ secrets.SECRET_KEY }}
+            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          run: python manage.py migrate
+
+        - name: Run tests
+          env:
+            SECRET_KEY: ${{ secrets.SECRET_KEY }}
+            POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          run: python manage.py test
+
+
+
+
+
+
+
+
+
+#not work
+#  test:
+#    runs-on: ubuntu-latest
+#
+#    services:
+#      postgres:
+#        image: postgres:16-alpine
+#        env:
+#          POSTGRES_DB: test_db
+#          POSTGRES_USER: postgres
+#          POSTGRES_PASSWORD: postgres
+#        ports:
+#          - 5432:5432
+#        options: >-
+#          --health-cmd pg_isready
+#          --health-interval 10s
+#          --health-timeout 5s
+#          --health-retries 5
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#
+#      - name: Set up Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.12'
+#          cache: 'pip'# Укажите нужную версию Python
+#
+#      - name: Create virtual environment
+#        run: |
+#          python -m venv venv
+#          source venv/bin/activate
+#          pip install --upgrade pip
+#
+#      - name: activate
+#        run: |
+#          source venv/bin/activate
+#
+#      - name: Install dependencies
+#        run: |
+#          source venv/bin/activate
+#          pip install -r requirements.txt
+#
+#      - name: Run migrations
+#        run: python manage.py migrate
+#
+#
+#
+#      - name: Run tests
+#        env:
+#          DATABASE_URL: postgres://postgres:postgres@localhost/test_db
+#          SECRET_KEY: '8lu*6g0lg)9z!ba+a$ehk)xt)x%rxgb$i1&amp;022shmi1jcgihb*'
+##          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+#
+#        run: python manage.py test
+#
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #  tests:
