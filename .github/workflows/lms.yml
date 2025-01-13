@@ -57,7 +57,9 @@ jobs:
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost/test_db
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SECRET_KEY: '8lu*6g0lg)9z!ba+a$ehk)xt)x%rxgb$i1&amp;022shmi1jcgihb*'
+#          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
         run: python manage.py test
 
 
