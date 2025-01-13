@@ -30,7 +30,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.12' Замените на вашу версию Python
+        python-version: '3.12'
           #          cache: 'pip'
     - name: Cache pip
       uses: actions/cache@v3
