@@ -64,6 +64,7 @@ jobs:
           POSTGRES_DB: 'lms'
           POSTGRES_USER: 'postgres'
           POSTGRES_PASSWORD: 'some_password'
+          ENV_TYPE: 'local'
         run:
           python manage.py migrate
 
@@ -74,6 +75,7 @@ jobs:
           POSTGRES_DB: 'lms'
           POSTGRES_USER: 'postgres'
           POSTGRES_PASSWORD: 'some_password'
+          ENV_TYPE: 'local'
         run:
           python manage.py test
 
