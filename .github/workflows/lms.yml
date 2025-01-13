@@ -90,15 +90,15 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - name: Add SSH key to known_hosts
-        run: |
-          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+#      - name: Add SSH key to known_hosts
+#        run: |
+#          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Run bash script via ssh
         env:
           SOME_DIR: ${{ secrets.DEPLOY_DIR }}
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "ls $SOME_DIR"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << "ls $SOME_DIR"
 
 
 
@@ -113,7 +113,7 @@ jobs:
 #            echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ${{ secrets.DEPLOY_DIR }}/.env1
 #            echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> ${{ secrets.DEPLOY_DIR }}/.env1
 #            # Добавьте другие переменные окружения по необходимости
-#          EOF    
+#          EOF
 
 
 
