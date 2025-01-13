@@ -47,10 +47,25 @@ jobs:
           python-version: '3.12'
           cache: 'pip'# Укажите нужную версию Python
 
+      - name: Create virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
 
+      - name: activate
+        run: |
+          source venv/bin/activate
+
+      - name: Install dependencies
+        run: |
+          source venv/bin/activate
+          pip install -r requirements.txt          
 
       - name: Run migrations
         run: python manage.py migrate
+
+
 
       - name: Run tests
         env:
