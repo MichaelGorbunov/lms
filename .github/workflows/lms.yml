@@ -138,7 +138,7 @@ jobs:
             cd ${{ secrets.DEPLOY_DIR }}
             source venv/bin/activate
             python manage.py collectstatic --noinput
-          EOF    
+              
 
 
 
