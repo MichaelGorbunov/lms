@@ -18,19 +18,19 @@ jobs:
 #      - run: echo "🍏 This job's status is ${{ job.status }}."
   example-job:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./scripts
+#    defaults:
+#      run:
+#        working-directory: ./scripts
     steps:
       - name: Check out the repository to the runner
         uses: actions/checkout@v4
-#      - name: Make the script files executable
-#        run: chmod +x my-script.sh
+      - name: Make the script files executable
+        run: chmod +x ./script/my-script.sh
       - name: Run the scripts
         run: |
-#          ls ./script
+          ls ./script
           ls .
           ls ${{ github.workspace }}
-#          ./my-script.sh
+          ./script/my-script.sh
           
 
