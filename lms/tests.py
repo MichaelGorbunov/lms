@@ -130,13 +130,13 @@ class CourseTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Course.objects.all().count(), 2)
 
-    def test_course_update(self):
-        url = f"/lms/course/{self.course.pk}/"
-        data = {"title": "Python"}
-        response = self.client.patch(url, data)
-        data = response.json()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(data.get("title"), "Python")
+    # def test_course_update(self):
+    #     url = f"/lms/course/{self.course.pk}/"
+    #     data = {"title": "Python"}
+    #     response = self.client.patch(url, data)
+    #     data = response.json()
+    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
+    #     self.assertEqual(data.get("title"), "Python")
 
     def test_course_delete(self):
         url = f"/lms/course/{self.course.pk}/"

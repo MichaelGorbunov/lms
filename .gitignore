@@ -167,5 +167,4 @@ cython_debug/
 /lint.cmd
 /lint_add.cmd
 /db.sqlite3
-
-
+/.di4/
