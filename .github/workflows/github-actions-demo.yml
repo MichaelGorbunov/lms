@@ -18,7 +18,7 @@ jobs:
 #      - run: echo "🍏 This job's status is ${{ job.status }}."
   example-job:
     runs-on: ubuntu-latest
-    defaults:
+#    defaults:
 #      run:
 #        working-directory: scripts
     steps:
