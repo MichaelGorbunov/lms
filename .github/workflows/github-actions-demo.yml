@@ -28,7 +28,8 @@ jobs:
 #        run: chmod +x my-script.sh
       - name: Run the scripts
         run: |
+          ls .
           ls ${{ github.workspace }}
-          ./my-script.sh
+#          ./my-script.sh
           
 
