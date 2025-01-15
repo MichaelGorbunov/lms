@@ -30,6 +30,6 @@ jobs:
         run: |
           ls .
           ls ${{ github.workspace }}
-          ./my-script.sh
+#          ./my-script.sh
           
 
